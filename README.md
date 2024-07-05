@@ -247,7 +247,9 @@ int len2 = s.size(); // Same shit
 ```
 
 ## Conditions
-C++'s condition syntax is inspired by the [Bython](https://github.com/mathialo/bython) language syntax. Only difference is C++ uses `else if` instead of `elif`
+
+#### If-else
+C++'s if-else syntax is inspired by the [Bython](https://github.com/mathialo/bython) language syntax. Only difference is C++ uses `else if` instead of `elif`
 
 ```cpp
 if (condition1) {
@@ -268,3 +270,21 @@ Example:
 ```cpp
 cout << "Light is a " + (observed ? "particle" : "wave") << endl;
 ```
+
+#### Switch-case
+Switch case can also be considered as condition, its syntax is exactly the same as Java's. For this reason we are not gonna elaborate more on this. One reason we use switch-case over if-else is not only because of it's simplicity in some specific case (no need to spam `==`), it's also significantly faster than if-else statements, refer to [this video](https://youtu.be/fjUG_y5ZaL4?si=jg77LfneYWlfA8iP).
+
+```cpp
+switch (expression) {
+    case x:
+        // code block
+        break;
+    case y:
+        // code block
+        break;
+    default:
+        // code block
+}
+```
+
+> A break can save a lot of execution time because it "ignores" the execution of all the rest of the code in the switch block.
