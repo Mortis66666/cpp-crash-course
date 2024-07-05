@@ -246,3 +246,25 @@ int len = s.length(); // 13
 int len2 = s.size(); // Same shit
 ```
 
+## Conditions
+C++'s condition syntax is inspired by the [Bython](https://github.com/mathialo/bython) language syntax. Only difference is C++ uses `else if` instead of `elif`
+
+```cpp
+if (condition1) {
+    // Do smth
+} else if (condition2) {
+    // Do smth else
+} else {
+    // Do stuff
+}
+```
+
+Another alternative, is using ternary operator, which is basically an if-else short hand. Syntax:
+```cpp
+variable = (condition) ? expressionTrue : expressionFalse;
+```
+Example:
+
+```cpp
+cout << "Light is a " + (observed ? "particle" : "wave") << endl;
+```
