@@ -155,6 +155,15 @@ string s(1, c);
 ```
 1 indicates the length, for char it's always 1
 
+For numbers:
+```cpp
+int a = 911;
+double b = 1.61803399;
+
+string sa = to_string(a);
+string sb = to_string(b);
+```
+
 ##### Number convert
 There's nothing much about this, literally just
 ```cpp
@@ -201,4 +210,39 @@ Comparison operators are the same as any other language, namely
 `x = x opr y` can be shorten to `x opr= y`, if that isn't obvious enough.
 
 
-WIP
+## String
+As mentioned before, `string` is basically an array of `char`s, but as an object, with helper functions that makes your life easier.
+
+List of useful functions for string:
+
+Concatenation
+```cpp
+string s = "Hello";
+cout << s + ", world!" << endl; // Hello, world!
+cout << s << endl; // Hello
+
+string s2 = s + ", world!";
+cout << s2 << endl; // Hello, world!
+
+s.append(", world!");
+cout << s << endl; // Hello, world!
+```
+
+Indexing
+```cpp
+char c = s[0]; // H
+char d = s.at(0); // Literally the same thing, but throws error when you try to access out of bound index.
+```
+
+Changing characters
+```cpp
+s[0] = 'B'; // Bello, world!
+s.at(0) = 'Z' // Zello, world!
+```
+
+Get length
+```cpp
+int len = s.length(); // 13
+int len2 = s.size(); // Same shit
+```
+
