@@ -288,3 +288,27 @@ switch (expression) {
 ```
 
 > A break can save a lot of execution time because it "ignores" the execution of all the rest of the code in the switch block.
+
+## Loop
+
+#### While loop
+While loop is the same as any other language, it's just a loop that runs while the condition is true.
+
+```cpp
+while (condition) {
+    // Do smth
+}
+```
+
+Another alternative is do-while loop, which is basically a while loop that runs at least once. What this means is that the condition is checked after the first iteration.
+```cpp
+do {
+    // Do smth
+} while (condition);
+```
+
+```cpp
+do {
+    cout << "This still got printed because it runs for one turn before checking condition" << endl;
+} while (false);
+```
