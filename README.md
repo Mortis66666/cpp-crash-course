@@ -402,3 +402,121 @@ This code outputs 0, 1, 2, 4. 3 is skipped because of the `continue`, and 5 is n
 When a loop is `break`ed or `continue`d, it will not execute the rest of the code in the loop, and will immediately go to the next iteration or exit the loop.
 
 When you have nested loops, `break` and `continue` will only affect the innermost loop.
+
+## Data structure
+
+A variable can only store one value at once, but what if you want to store multiple values? This is where data structures come in. Data strucures are basically a way to store multiple values in one variable. Different data structures have different properties and use cases.
+
+#### Array
+Array is a data structure that stores multiple values of the same type in one variable. It's like a list in Python, but you have to specify the size of the array when you declare it. The size of the array cannot be changed after it's declared.
+
+Because arrays are fixed size, you must specify their size when declaring one.
+```cpp
+int arr[5]; // Array of 5 integers
+```
+
+If the values of the array is known, you can also initialize the array when declaring it.
+```cpp
+int arr[] = {1, 2, 3, 4, 5}; // Array of 5 integers
+```
+
+Notice that you don't need to specify the size in this case, because the size is automatically determined by the number of values in the array.
+
+The one and only way to access an element in an array is by using the index of the element. The index of the first element is 0, and the index of the last element is the size of the array minus one.
+
+```cpp
+int arr[] = {1, 2, 3, 4, 5};
+cout << arr[0] << endl; // 1
+cout << arr[4] << endl; // 5
+```
+
+You can also change the value of an element in the array by assigning a new value to it.
+```cpp
+int arr[] = {1, 2, 3, 4, 5};
+arr[0] = 10;
+cout << arr[0] << endl; // 10
+```
+
+#### Vector
+Vector is a data structure that is similar to an array, but it's dynamic, meaning that you can change the size of the vector after it's declared.
+
+Declaration
+```cpp
+vector<int> vec; // Empty vector of integers
+```
+Replace int with any type you want.
+
+Initialization
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5}; // Vector of 5 integers
+```
+
+Hacky way to create a vector with the same values
+```cpp
+vector<int> vec(5, 0); // Vector of 5 integers, all initialized to 0
+```
+
+Also work when trying to create a 2d vector of 0s
+```cpp
+vector<vector<int>> vec(5, vector<int>(5, 0)); // 5x5 2d vector of integers, all initialized to 0
+```
+
+Accessing elements
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+cout << vec[0] << endl; // 1
+cout << vec.at(0) << endl; // Literally the same thing, but throws error when you try to access out of bound index.
+```
+
+Changing elements
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+vec[0] = 10;
+cout << vec[0] << endl; // 10
+vec.at(0) = 20;
+cout << vec[0] << endl; // 20
+```
+
+Compated to array, vector has a lot of functionality. Some of the most useful functions are:
+
+Get size
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+cout << vec.size() << endl; // 5
+```
+
+Append element
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+vec.push_back(6);
+cout << vec[5] << endl; // 6
+```
+
+Remove last element
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+vec.pop_back();
+cout << vec.size() << endl; // 4
+```
+
+Remove element at specific index
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+vec.erase(vec.begin() + 2);
+cout << vec[2] << endl; // 4
+``` 
+
+Insert element at specific index
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+vec.insert(vec.begin() + 2, 10);
+cout << vec[2] << endl; // 10
+```
+
+Ok I think it's clear that we are starting to see some weird syntax now. Wtf is `vec.begin`? There's an easy explanation for this, which is C++ is a stupid low level language because they are too lazy to implement a normal `insert` function that just receives a normal integer parameter. Understanding this requires another level of understand of C++. This complex concept is explained in later chapter (or not), for now just understand it as it is what it is. 
+
+##### Array vs Vector
+
+After seeing this 2 types of data structure, you might ask, why array? Inserting in array requires you to have an index while vector insert is as simple as pushing back to the vector by calling a function.
+
+The answer is, array is faster than vector. This is because array is a fixed size data structure, while vector is dynamic. This means that array is stored in a contiguous block of memory, while vector is stored in a non-contiguous block of memory. This makes array faster than vector when accessing elements, because the elements are stored next to each other in memory. But if your algorithm suck, you should probably prioritize that first before worrying about the speed of your data structure. So feel free to just use `vector<int>` and don't give a shit to memory management.
