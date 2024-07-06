@@ -312,3 +312,93 @@ do {
     cout << "This still got printed because it runs for one turn before checking condition" << endl;
 } while (false);
 ```
+
+#### For loop
+For loop syntax in C++ is exactly the same as Java. Syntax:
+```cpp
+for (initial; condition; increment) {
+    // Do smth
+}
+```
+
+This code prints 0 to 4
+```cpp
+for (int i = 0; i < 5; i++) {
+    cout << i << endl;
+}
+```
+
+Those fields are optional, meaning you can not put anything in there, but you have to put the semicolon.
+```cpp
+int i = 0; // Put initial outside because you can
+for (; i < 5;) {
+    cout << i << endl;
+    i++; // Increment inside the loop because why not
+}
+```
+```cpp
+for (;;) { // No stop condition, hence resulting in infinite loop
+    // Do some expensive things here to break your computer
+}
+```
+
+##### Range-based for loop
+This is a special loop that is only available in C++11 and above. It's a loop that iterates through all the elements in a container, such as an array or a vector.
+
+Syntax:
+```cpp
+for (type var : container) {
+    // Do smth
+}
+```
+
+This works for
+
+- Arrays
+```cpp
+int arr[] = {1, 2, 3, 4, 5};
+for (int i : arr) {
+    cout << i << endl;
+}
+```
+
+- Vectors
+```cpp
+vector<int> vec = {1, 2, 3, 4, 5};
+for (int i : vec) {
+    cout << i << endl;
+}
+```
+
+- Strings
+```cpp
+string s = "Hello";
+for (char c : s) {
+    cout << c << endl;
+}
+```
+
+This is useful when you only need the value of the element, and not the index.
+
+#### Break and continue
+What if I have multiple conditions that will break the loop? I wish there's a way to break the loop inside the loop itself. Fear not, for `break` and `continue` is here to save the day!
+
+`break` is used to break the loop, and `continue` is used to skip the current iteration and continue to the next iteration.
+
+```cpp
+for (int i = 0; i < 10; i++) {
+    if (i == 5) {
+        break; // Break the loop when i is 5
+    }
+    if (i == 3) {
+        continue; // Skip the iteration when i is 3
+    }
+    cout << i << endl;
+}
+```
+
+This code outputs 0, 1, 2, 4. 3 is skipped because of the `continue`, and 5 is not printed because of the `break`.
+
+When a loop is `break`ed or `continue`d, it will not execute the rest of the code in the loop, and will immediately go to the next iteration or exit the loop.
+
+When you have nested loops, `break` and `continue` will only affect the innermost loop.
