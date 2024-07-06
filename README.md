@@ -513,10 +513,84 @@ vec.insert(vec.begin() + 2, 10);
 cout << vec[2] << endl; // 10
 ```
 
-Ok I think it's clear that we are starting to see some weird syntax now. Wtf is `vec.begin`? There's an easy explanation for this, which is C++ is a stupid low level language because they are too lazy to implement a normal `insert` function that just receives a normal integer parameter. Understanding this requires another level of understand of C++. This complex concept is explained in later chapter (or not), for now just understand it as it is what it is. 
+Ok I think it's clear that we are starting to see some weird syntax now. Wtf is `vec.begin`? There's an easy explanation for this, which is C++ is a stupid low level language because they are too lazy to implement a normal `insert` function that just receives a normal integer parameter. Understanding this requires another level of understand of C++. This complex concept is explained in the [competitive programming handbook](https://cses.fi/book/book.pdf) page 49.
 
 ##### Array vs Vector
 
 After seeing this 2 types of data structure, you might ask, why array? Inserting in array requires you to have an index while vector insert is as simple as pushing back to the vector by calling a function.
 
 The answer is, array is faster than vector. This is because array is a fixed size data structure, while vector is dynamic. This means that array is stored in a contiguous block of memory, while vector is stored in a non-contiguous block of memory. This makes array faster than vector when accessing elements, because the elements are stored next to each other in memory. But if your algorithm suck, you should probably prioritize that first before worrying about the speed of your data structure. So feel free to just use `vector<int>` and don't give a shit to memory management.
+
+Oh btw, congrats! At this point, you can pretty much do any thing you want and solve any cp problems, everything after this is niche stuff that can be useful when it is needed.
+
+
+#### Pair
+Very simple, used to group two values that doesn't have to be the same type together.
+
+Syntax:
+```cpp
+pair<type1, type2> varName;
+```
+
+Example:
+```cpp
+pair<int, string> myPair;
+myPair.first = 10;
+myPair.second = "Hello";
+```
+
+You can also quickly create a pair with the builtin make_pair function
+
+```cpp
+pair<int, int> p = make_pair(1, 2);
+```
+
+#### Map
+, aka dict in python, object in javacript and hashmap in java.
+
+```cpp
+map<string, int> m;
+m["monkey"] = 4;
+m["banana"] = 3;
+m["harpsichord"] = 9;
+cout << m["banana"] << "\n"; // 3
+```
+
+If the value of a key is requested but the map does not contain it, the key is automatically added to the map with a default value. For example, in the following code, the key ”aybabtu” with value 0 is added to the map.
+```cpp
+map<string,int> m;
+cout << m["aybabtu"] << "\n"; // 0
+```
+
+The function count checks if a key exists in a map:
+```cpp
+if (m.count("aybabtu")) {
+// key exists
+}
+```
+The following code prints all the keys and values in a map:
+```cpp
+for (auto x : m) {
+cout << x.first << " " << x.second << "\n";
+}
+```
+
+#### Set
+At this point I realise the cp handbook is a better resource than this, so I'm just gonna copy paste from there.
+
+A set is a data structure that maintains a collection of elements. The basic operations of sets are element insertion, search and removal.
+
+
+The following code creates a set that contains integers, and shows some of the operations. The function `insert` adds an element to the set, the function count returns the number of occurrences of an element in the set, and the function `erase` removes an element from the set.
+
+```cpp
+set<int> s;
+s.insert(3);
+s.insert(2);
+s.insert(5);
+cout << s.count(3) << "\n"; // 1
+cout << s.count(4) << "\n"; // 0
+s.erase(3);
+s.insert(4);
+cout << s.count(3) << "\n"; // 0
+```
